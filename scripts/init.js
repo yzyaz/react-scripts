@@ -59,7 +59,7 @@ function tryGitInit() {
 function tryGitCommit(appPath) {
   try {
     execSync('git add -A', { stdio: 'ignore' });
-    execSync('git commit -m "Initialize project using Create React App"', {
+    execSync('git commit -m "feat: Initialize project using Create React App"', {
       stdio: 'ignore',
     });
     return true;
@@ -345,6 +345,9 @@ module.exports = function (
     console.error(`\`${command} ${args.join(' ')}\` failed`);
     return;
   }
+
+  //TODO:yzy
+  // 这里操作husky7吧, 等我把node学好再说
 
   // Create git commit if git repo was initialized
   if (initializedGit && tryGitCommit(appPath)) {

@@ -260,6 +260,14 @@ function verifyTypeScriptSetup() {
     );
   }
 
+  // tsconfig引入外部配置文件
+  appTsConfig = immer(appTsConfig, config => {
+    config.extends = './paths.json';
+  });
+  messages.push(
+    `${chalk.cyan('extends')} should be ${chalk.cyan.bold('paths.json')}`
+  );
+
   if (messages.length > 0) {
     if (firstTimeSetup) {
       console.log(

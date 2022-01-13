@@ -157,6 +157,8 @@ function verifyTypeScriptSetup() {
       reason: 'to support the new JSX transform in React 17',
     },
     paths: { value: undefined, reason: 'aliased imports are not supported' },
+    // 增加baseUrl试用src绝对路径生效
+    baseUrl:{ value:'.' }
   };
 
   const formatDiagnosticHost = {
@@ -260,13 +262,13 @@ function verifyTypeScriptSetup() {
     );
   }
 
-  // tsconfig引入外部配置文件
-  appTsConfig = immer(appTsConfig, config => {
-    config.extends = './paths.json';
-  });
-  messages.push(
-    `${chalk.cyan('extends')} should be ${chalk.cyan.bold('paths.json')}`
-  );
+  // tsconfig引入外部配置文件(不行, 因为webpack中是直接读取的tsconfig.json文件的baseUrl,直接用extends是引入不了的)
+  // appTsConfig = immer(appTsConfig, config => {
+  //   config.extends = './paths.json';
+  // });
+  // messages.push(
+  //   `${chalk.cyan('extends')} should be ${chalk.cyan.bold('paths.json')}`
+  // );
 
   if (messages.length > 0) {
     if (firstTimeSetup) {

@@ -65,6 +65,9 @@ const imageInlineSizeLimit = parseInt(
   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000'
 );
 
+// 是否使用cli自带的postcss配置,(不适用外部的postcss.config.js)
+const YZY_DEFAULT_POSTCSS_CONFIG = process.env.YZY_DEFAULT_POSTCSS_CONFIG === 'true'
+
 // Check if TypeScript is setup
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
@@ -137,7 +140,7 @@ module.exports = function (webpackEnv) {
         // Adds vendor prefixing based on your specified browser support in
         // package.json
         loader: require.resolve('postcss-loader'),
-        options: {
+        options: YZY_DEFAULT_POSTCSS_CONFIG ? {
           postcssOptions: {
             // Necessary for external CSS imports to work
             // https://github.com/facebook/create-react-app/issues/2677
@@ -175,7 +178,7 @@ module.exports = function (webpackEnv) {
                 ],
           },
           sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
-        },
+        } : undefined,
       },
     ].filter(Boolean);
     if (preProcessor) {

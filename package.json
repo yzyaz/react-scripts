@@ -1,6 +1,6 @@
 {
   "name": "@yzyaz/react-scripts",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
     "react-scripts": "./bin/react-scripts.js"
   },
   "scripts": {
-    "yPublish":"npm publish --registry http://106.52.76.36:4873/"
+    "yPublish": "npm publish --registry http://106.52.76.36:4873/",
+    "postversion": " npm run yPublish && git push"
   },
   "types": "./lib/react-app.d.ts",
   "dependencies": {

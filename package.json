@@ -27,8 +27,9 @@
     "react-scripts": "./bin/react-scripts.js"
   },
   "scripts": {
-    "yPublish": "npm publish --registry http://106.52.76.36:4873/",
-    "postversion": " npm run yPublish && git push"
+    "yPublish": "npm publish --access public",
+    "yPublishR": "npm publish --registry http://106.52.76.36:4873/",
+    "postversion": "npm run yPublish && npm run  yPublishR && git push"
   },
   "types": "./lib/react-app.d.ts",
   "dependencies": {

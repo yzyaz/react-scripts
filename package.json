@@ -1,6 +1,6 @@
 {
   "name": "@yzyaz/react-scripts",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "自定义react脚手架, Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
